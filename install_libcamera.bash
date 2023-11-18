@@ -12,12 +12,16 @@ if [[ ! $(cat /boot/config.txt | grep 'dtoverlay=ov5647,vcm') ]]; then
 	echo "then reboot the system (sudo reboot)."
 fi
 
+_popd=$PWD
+cd $HOME
 
-if [[ -x install_pivariety_pkgs.sh ]]; then
+if [[ ! -x install_pivariety_pkgs.sh ]]; then
 	curl -o install_pivariety_pkgs.sh https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/install_script/install_pivariety_pkgs.sh
 	chmod +x install_pivariety_pkgs.sh
 fi
 
-./install_pivariety_pkgs.sh -p libcamera_dev
-./install_pivariety_pkgs.sh -p libcamera_apps
+sudo ./install_pivariety_pkgs.sh -p libcamera_dev
+sudo ./install_pivariety_pkgs.sh -p libcamera_apps
+
+cd ${_popd}
 
