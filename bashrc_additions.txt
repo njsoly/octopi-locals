@@ -1,0 +1,7 @@
+if [[ -f ~/miscellany/.bashrc ]]; then
+    . ~/miscellany/.bashrc
+fi
+
+export PATH=$PATH:$HOME/octopi-locals:$HOME/miscellany
+
+export PS1='\[\e[36m\][\t]\[\e[0m\] \e[35m<\u@\H>\e[0m \[\e[32m\][$(branchname||"")]\[\e[0m\] \[\e[33m\]\w\[\e[0m\]\n$ '
